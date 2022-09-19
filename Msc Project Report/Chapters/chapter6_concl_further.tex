@@ -1,0 +1,21 @@
+\chapter{Conclusions and Future Work}
+
+\section{Conclusions}
+
+In this section, the objectives will be reviewed and evaluated based on the implementation, and then the existing problems will be summarised and finally, a conclusion.
+
+\hspace*{\fill}
+
+There are five objectives set in the planning stage. The first one is an OpenGL model visualisation application completed on June 27th, three days earlier than initially planned. The implementation of the SDF generation algorithm consumes the most time. The generation function initially used the brutal force method to ensure the data structure was built correctly; this process cost one week. Then the ray-intersection algorithm was implemented in four days and used for two days to adapt to the existing code. After that, the task became the KD-tree structure implementation, which takes the longest time to complete and test. This implementation was finished on July 20th. Then the visualisation shader of SDF was implemented four days later. Finally, the application was tested and evaluated on a personal laptop and the computer of the School of Computing and was compiled and run correctly on both. The implementation and evaluation results have been shown in Chapter \ref{chap4} and \ref{chap5}. Therefore, all of the objectives have been achieved.
+
+\hspace*{\fill}
+
+The main problem of this project, for now, is the performance. Although the performance is efficient for CPU implementation, using the current implementation to generate the SDF for a single complex model with satisfying quality costs of at least dozens of seconds is unacceptable for real-time rendering. In addition, the visualisation can be improved, as shown in \ref{eva:sdf}, but the result of colour volume mode is still not continuous. Besides, more visualisation modes like Ray Marching can be added. Finally, the application only supports a single model for now, which cannot meet the requirement of the modern graphic industry.
+
+\hspace*{\fill}
+
+In conclusion, the targets of the initial plan have been completed, and it is helpful to enhance the understanding of SDF, ray tracing and KD-tree structure. More optimisation strategies and algorithms can be added to the implementation to satisfy the requirement of modern industry and make the comparison between different solutions. Since my previous experience in computer graphics is zero, implementing this project improved my knowledge of Graphics APIs, SDF, system design, programming, evaluation and academic writing. I hope these skills will be applied to my future career.
+
+\section{Future Work}
+
+The main problem for the current implementation is the generation time, which can be solved by switching the implementation to GPU. The compute shader is an ideal choice. The first work for the future is implementing a GPU compute version to accelerate the generation speed. Besides, the BVH structure mentioned in \ref{br:algorithm2} is widely used in the industry. Adding BVH to the application will help compare the pros and cons of different acceleration structures. The next plan is to provide support for the complex scene. The model class should be upgraded to process the multiple meshes, which meet the realistic situation of the industrial applications. Finally, the application can be applied to more problems like sphere-tracing, soft shadow, and ray marching, and these scenarios will be gradually added to the implementation in the future.

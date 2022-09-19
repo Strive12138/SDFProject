@@ -1,0 +1,50 @@
+\documentclass[12pt,a4paper,oneside]{book}
+%\documentclass[12pt,a4paper,twoside]{book} //奇数页开始
+
+%include the configuration file for layout
+%Have a look in this file it has some useful commands defined
+\input{config.tex}
+
+% -----------allow algorithm cross pages-------------
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+\begin{document}
+%The prelude is everything upto the start of chapter 1
+\include{prelude}
+
+%include as many chapters as you have.
+%the chapters are in a directory called Chapters
+\include{Chapters/chapter1_intro}
+\include{Chapters/chapter2_bacg_res}
+\include{Chapters/chapter3_design}
+\include{Chapters/chapter4_impl}
+\include{Chapters/chapter5_eva}
+\include{Chapters/chapter6_concl_further}
+
+%Adds References to the table of content
+%all you bibtex enteries go in the file called refs.bib
+\addcontentsline{toc}{chapter}{References}
+\bibliography{refs}
+
+%any appendices you have go in a file called appendix.
+\include{appendix}
+\end{document}
